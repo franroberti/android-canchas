@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">My Application2</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="hello">Hello World, MainActivity!</string>
+    <string name="str_btn_load">Load Fragment</string>
+    <string name="str_tv_fragment">This is a fragment</string>
+    <string name="contact_phone_1">Telefono 1</string>
+    <string name="contact_phone_2">Telefono 2</string>
+    <string name="contact_title">Contacto</string>
+    <string name="contact_subtitile">Si querés reservar una cancha, llama al :</string>
+    <string name="ver_en_maps">Ver en maps</string>
+    <string name="reservas_title">Reservas</string>
+    <string name="reservas_subtitle">Elegí la fecha</string>
+    <string name="loading_request">Loading...</string>
+
+</resources>
