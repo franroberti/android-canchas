@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.franco.masha.MainActivity" >
+    <item android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item android:id="@+id/color_red"
+        android:title="RED"
+        android:orderInCategory="1"
+        app:showAsAction="never" />
+    <item android:id="@+id/color_blue"
+        android:title="BLUE"
+        android:orderInCategory="2"
+        app:showAsAction="never" />
+    <item android:id="@+id/color_green"
+        android:title="GREEN"
+        android:orderInCategory="3"
+        app:showAsAction="never" />
+    <item android:id="@+id/color_magenta"
+        android:title="MAGENTA"
+        android:orderInCategory="4"
+        app:showAsAction="never" />
+</menu>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Masha</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Slide numero : %1$d</string>
+</resources>
