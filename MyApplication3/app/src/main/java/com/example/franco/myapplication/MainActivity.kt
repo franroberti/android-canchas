@@ -14,11 +14,6 @@ import java.net.URL
 import java.util.*
 import android.app.DatePickerDialog
 import android.view.View
-import com.example.franco.myapplication.R.layout.activity_main
-import android.view.ViewGroup
-import android.view.LayoutInflater
-
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -84,26 +79,24 @@ class MainActivity : AppCompatActivity() {
             if (searchResults != null && searchResults != "") {
 
                 val infoView = TextView(applicationContext)
-                infoView.text = ""
                 try {
                     val reservations = JSONArray(searchResults)
                     progressBar3.progress = 100
 
                     for (i in 0 until reservations.length()) {
-                        var fieldName = reservations.getJSONObject(i).getString("nombre")
+                        var reservation = reservations.getJSONObject(i)
+                        var fieldName = reservation.getString("nombre")
+                        var reservas = reservation.getJSONArray("reservas")
+                        for (j in 0 until reservas.length()) {
+                            var textToAppend = TextView(applicationContext)
+                            textToAppend.text = fieldName + " - "
 
-                        for (j in 0 until reservations.getJSONObject(i).getJSONArray("reservas").length()) {
-                            var inflater = layoutInflater
-                            var layoutR = R.layout.reserva
-                            var view = inflater.inflate(layoutR, null)
-                            var main = scrollContainer as ViewGroup
-                            main.addView(view, 0)
+                            textToAppend.append(Date(reservas.getJSONObject(i).getString("desde").toLong()).hours.toString())
+                            textToAppend.append(" hs")
 
-                            infoView.append(" - desde:")
-                            infoView.append(reservations.getJSONObject(i).getJSONArray("reservas").getJSONObject(i).getString("desde"))
+                            scrollContainer.addView(textToAppend)
                         }
                     }
-                    scrollContainer.addView(infoView)
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
@@ -111,10 +104,18 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-       fun parseResults(results: Array<Date>,dateFilter: Date): List<Date> {
-           val reservations = results.filter { it.day == dateFilter.day}
-           return reservations
+       fun JSONArray.filterDateResults(filterDate: Date): List<Date> {
+           var list = emptyList<Date>()
+           for (j in 0 until this.length()) {
+               if(compareDateDay(Date(this.getJSONObject(j).getString("desde").toLong()),filterDate)){
+                   list += (Date(this.getJSONObject(j).getString("desde").toLong()))
+               }
+           }
+           return list
        }
+
+        fun compareDateDay(date1: Date,date2: Date):Boolean =
+                ((date1.year)==(date2.year) && (date1.month)==(date2.month) && (date1.day)==(date2.day))
     }
 
 }
